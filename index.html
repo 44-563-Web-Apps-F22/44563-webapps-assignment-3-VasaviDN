@@ -47,9 +47,9 @@
         <hr>
         <h3>Cities to visit nearby:</h3>
         <p>Here is the list of cities that you can visit which are near to Louvre Museum. It includes the name of the city along with the interesting places you can visit. Also the time spend for visiting is also mentioned as below:</p>
-        <table border-style="solid">
+        <table>
             <tr>
-                <th>Name of a City</th>
+                <th>Name of the city to visit</th>
                 <th>Important location to visit</th>
                 <th>Time to spend visiting</th>
             </tr>
@@ -79,7 +79,35 @@
                 <td>7 hours</td>
             </tr>
         </table>
-    
+
+        <hr>
+        <h3>Block Quote Exercise</h3>
+        <blockquote cite="https://stackoverflow.com/questions/59199571/adding-excluded-categories-to-existing-excluded-categories-for-wordpress-query">Adding excluded categories to existing excluded categories for Wordpress query</blockquote>
+
+        <a href="https://stackoverflow.com/questions/59199571/adding-excluded-categories-to-existing-excluded-categories-for-wordpress-query">Click here for a quick link to  the source</a>
+
+        <pre>
+            function exclude_post_categories($excl='', $spacer=' ') {
+                $categories = get_the_category(get_the_ID());
+                if (!empty($categories)) {
+                  $exclude = $excl;
+                  $exclude = explode(",", $exclude);
+                  $thecount = count(get_the_category()) - count($exclude);
+                  foreach ($categories as $cat) {
+                    $html = '';
+                    if (!in_array($cat->cat_ID, $exclude)) {
+                      $html .= '<a href="' . get_category_link($cat->cat_ID) . '" ';
+                      $html .= 'title="' . $cat->cat_name . '">' . $cat->cat_name . '</a>';
+                      if ($thecount > 0) {
+                        $html .= $spacer;
+                      }
+                      $thecount--;
+                      echo $html;
+                    }
+                  }
+                }
+              }
+        </pre>
 
     </body>
 </html>
